@@ -1,7 +1,9 @@
 package tk.monnef.sprout.styles.constants
+
 import scalacss.Defaults._
 
-object StyleConstants extends StyleSheet.Inline{
+object StyleConstants extends StyleSheet.Inline {
+
   import dsl._
 
   /**
@@ -38,6 +40,24 @@ object StyleConstants extends StyleSheet.Inline{
     val Yellow = c"#ffd600"
 
     val Cyan = c"#eef4f7"
+
+    // ^ from Udash generator
+    val golden = c"#bfbc9f"
+    val lightRed = c"#d1a19a"
+    val darkBlue = c"#020919"
+    val lighterDarkBlue = c"#0f1522"
+
+    val linkColor = c"#C2D4F9"
+
+    val bodyBackgroundColor = darkBlue
+    val bodyTextColor = c"#9FA9BF"
+
+    val codeTextColor = lightRed
+    val codeBackgroundColor = c"#000000"
+
+    val strongColor = golden
+
+    val captionColor = golden
   }
 
   /**
@@ -54,4 +74,5 @@ object StyleConstants extends StyleSheet.Inline{
 
     val PhoneMax = TabletMin - 1
   }
+
 }

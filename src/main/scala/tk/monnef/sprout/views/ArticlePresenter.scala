@@ -4,6 +4,7 @@ import scala.util.{Failure, Success}
 import cats._
 import cats.data._
 import cats.implicits._
+import tk.monnef.sprout.styles.ArticleStyles
 import tk.monnef.sprout.views.components.{Articles, ArticlesList}
 
 import scalatags.JsDom
@@ -61,16 +62,16 @@ class ArticleView(model: ModelProperty[ArticleModel], presenter: ArticlePresente
   import scalatags.JsDom.all._
 
   private val content = div(BootstrapStyles.container)(id := "content",
-    div(CustomStyles.article)(
+    div(
       produce(model)((m: ArticleModel) => {
         m.article.map((a: Article) => {
           div(
             h1(a.name),
-            div(a.author.name + " | " + a.date),
-            div(a.perex),
-            div(raw(a.body))
+            div(ArticleStyles.author)(a.author.name + " | " + a.date),
+            div(ArticleStyles.perex)(a.perex),
+            div(ArticleStyles.body)(raw(a.body))
           )
-        }).getOrElse(div("???")).render
+        }).getOrElse(div("Načítám...")).render
       })
     )
   )

@@ -7,7 +7,7 @@ import org.scalajs.dom.raw.Element
 
 import scalatags.JsDom.all._
 import scalacss.ScalatagsCss._
-import tk.monnef.sprout.styles.{CustomStyles, DemoStyles, GlobalStyles}
+import tk.monnef.sprout.styles.{ArticleListStyles, CustomStyles, DemoStyles, GlobalStyles}
 import tk.monnef.sprout.{ArticlePreview, ArticleState, Model}
 import tk.monnef.sprout.utils._
 
@@ -28,7 +28,7 @@ object Articles {
           img(src := article.imageUrl)
         )
         val colText = div(BootstrapStyles.Grid.colSm9)(
-          div(CustomStyles.articlePreviewCaption)(
+          div(ArticleListStyles.caption)(
             a(href := ArticleState(article.urlEncoded).url, article.name),
             " | ",
             a(href := Model.baseUrl + "/" + article.url, target := "blank", "originál")
@@ -44,7 +44,7 @@ object Articles {
           p(article.perex)
         )
 
-        div(BootstrapStyles.row, CustomStyles.articlePreview)(
+        div(BootstrapStyles.row, ArticleListStyles.body)(
           colText,
           colImg
         ).render

@@ -62,10 +62,6 @@ object GlobalStyles extends StyleSheet.Inline {
     )
   )
 
-  private val linkColor = c"#C2D4F9"
-  private val bodyBackgroundColor = c"#020919"
-  private val bodyTextColor = c"#9FA9BF"
-
   val global = style(
     unsafeRoot("#application")(
       height(100 %%)
@@ -84,8 +80,8 @@ object GlobalStyles extends StyleSheet.Inline {
       position.relative,
       height(100 %%),
       fontSize(1.4 rem),
-      backgroundColor(bodyBackgroundColor),
-      color(bodyTextColor)
+      backgroundColor(StyleConstants.Colors.bodyBackgroundColor),
+      color(StyleConstants.Colors.bodyTextColor)
     ),
 
     unsafeRoot("p")(
@@ -170,6 +166,10 @@ object GlobalStyles extends StyleSheet.Inline {
       )
     ),
 
+    unsafeRoot("h1, h2, h3")(
+      color(StyleConstants.Colors.captionColor)
+    ),
+    
     unsafeRoot("blockquote")(
       UdashFonts.rubik(FontWeight.ExtraLight, FontStyle.Italic),
       position.relative,
@@ -197,18 +197,18 @@ object GlobalStyles extends StyleSheet.Inline {
     unsafeRoot("a")(
       textDecoration := "none",
       outline(`0`).important,
-      color(linkColor),
+      color(StyleConstants.Colors.linkColor),
 
       &.link(
         textDecoration := "none"
       ),
 
       &.visited(
-        color(linkColor)
+        color(StyleConstants.Colors.linkColor)
       ),
 
       &.hover(
-        color(linkColor),
+        color(StyleConstants.Colors.linkColor),
         textDecoration := "underline"
       )
     ),
@@ -254,7 +254,8 @@ object GlobalStyles extends StyleSheet.Inline {
     ),
 
     unsafeRoot("strong")(
-      fontWeight.bolder
+      fontWeight.bolder,
+      color(StyleConstants.Colors.strongColor)
     ),
 
     unsafeRoot("b")(

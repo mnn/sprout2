@@ -4,7 +4,7 @@ import io.udash._
 import io.udash.rest.DefaultServerREST
 import io.udash.wrappers.jquery._
 import org.scalajs.dom.{Element, document}
-import tk.monnef.sprout.styles.CustomStyles
+import tk.monnef.sprout.styles.{ArticleListStyles, ArticleStyles, CustomStyles}
 
 import scala.scalajs.js.JSApp
 import scala.scalajs.js.annotation.JSExport
@@ -47,6 +47,8 @@ object Init extends JSApp with StrictLogging {
         jQ(FooterStyles.render[TypedTag[org.scalajs.dom.raw.HTMLStyleElement]].render).insertBefore(appRoot.get)
         jQ(HeaderStyles.render[TypedTag[org.scalajs.dom.raw.HTMLStyleElement]].render).insertBefore(appRoot.get)
         jQ(CustomStyles.render[TypedTag[org.scalajs.dom.raw.HTMLStyleElement]].render).insertBefore(appRoot.get)
+        jQ(ArticleListStyles.render[TypedTag[org.scalajs.dom.raw.HTMLStyleElement]].render).insertBefore(appRoot.get)
+        jQ(ArticleStyles.render[TypedTag[org.scalajs.dom.raw.HTMLStyleElement]].render).insertBefore(appRoot.get)
       }
     })
   }
