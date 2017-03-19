@@ -43,15 +43,15 @@ object IndexViewPresenter extends ViewPresenter[IndexState.type] {
 class IndexPresenter(model: ModelProperty[IndexModel]) extends Presenter[IndexState.type] {
   override def handleState(state: IndexState.type): Unit = {
     val mockArticles = Seq(
-      ArticlePreview("name", "url", "urlEnc", "perex", NameUrlPair("a", "a2"), "date", NameUrlPair("c", "c2"), Some(1), "img"),
-      ArticlePreview("name 2", "url", "urlEnc", "perex", NameUrlPair("a", "a2"), "date", NameUrlPair("c", "c2"), Some(11), "img")
+      ArticlePreview("name", "url", "urlEnc", "perex", NameUrlPair("a", "a2"), "date", NameUrlPair("c", "c2"), Some(1), "img", false),
+      ArticlePreview("name 2", "url", "urlEnc", "perex", NameUrlPair("a", "a2"), "date", NameUrlPair("c", "c2"), Some(11), "img", false)
     )
     model.subProp(_.list).set(ArticlesList(Seq()))
     import Context._
     Context.restServer.articles().onComplete {
       case Success(response) =>
         model.subModel(_.list).subProp(_.articles).set(response)
-        // global.console.log("img urls:", response.map(_.imageUrl).toJSArray)
+      // global.console.log("img urls:", response.map(_.imageUrl).toJSArray)
       case Failure(ex) => println("failed to get articles: ", ex)
     }
   }

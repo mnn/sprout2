@@ -9,4 +9,6 @@ object ExternalUrls {
   val avsystem = "http://www.avsystem.com/"
 
   val homepage = "http://udash.io/"
+  
+  val sprout2Github = "https://github.com/mnn/sprout2"
 }

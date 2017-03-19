@@ -1,6 +1,6 @@
 package tk.monnef.sprout.views.components
 
-import tk.monnef.sprout.OldIndexState
+import tk.monnef.sprout.{IndexState, OldIndexState}
 import tk.monnef.sprout.config.ExternalUrls
 import tk.monnef.sprout.styles.{CustomStyles, GlobalStyles}
 import tk.monnef.sprout.styles.partials.HeaderStyles
@@ -49,7 +49,12 @@ object Header {
     ).render*/
 
   private lazy val template = header(
-    div(CustomStyles.headerText)("Root.CZ - Sprout2 Front-End created by monnef")
+    div(CustomStyles.headerText)(
+      a(href := IndexState.url)("Root.CZ"),
+      " - ",
+      a(href := ExternalUrls.sprout2Github, target := "_blank")("Sprout2 Front-End"),
+      " created by monnef"
+    )
   ).render
 
   def getTemplate: Element = template

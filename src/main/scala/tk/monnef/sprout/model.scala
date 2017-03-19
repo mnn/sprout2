@@ -11,7 +11,8 @@ case class ArticlePreview(
                            date: String,
                            category: NameUrlPair,
                            commentsCount: Option[Int],
-                           imageUrl: String
+                           imageUrl: String,
+                           isActuality: Boolean
                          )
 
 case class Article(
@@ -23,6 +24,6 @@ case class Article(
                     body: String
                   )
 
-object Model{
+object Model {
   val baseUrl = "http://root.cz"
 }

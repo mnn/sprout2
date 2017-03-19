@@ -28,8 +28,14 @@ object ArticleListStyles extends StyleSheet.Inline {
   )
 
   val body = style(
-    paddingBottom(1 em),
-    textAlign.justify
+    paddingBottom(0.5 em),
+    marginBottom(0.7 em),
+    textAlign.justify,
+    borderBottom(0.1 em, solid, StyleConstants.Colors.bodyGhostTextColor)
+  )
+
+  val info = style(
+    paddingLeft(0.5 em)
   )
 }
 

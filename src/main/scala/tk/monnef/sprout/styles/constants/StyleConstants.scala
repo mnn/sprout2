@@ -51,6 +51,7 @@ object StyleConstants extends StyleSheet.Inline {
 
     val bodyBackgroundColor = darkBlue
     val bodyTextColor = c"#9FA9BF"
+    val bodyGhostTextColor = c"#414C62"
 
     val codeTextColor = lightRed
     val codeBackgroundColor = c"#000000"

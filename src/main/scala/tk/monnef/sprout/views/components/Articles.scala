@@ -17,9 +17,9 @@ object Articles {
 
   def getTemplate(model: ReadableProperty[ArticlesList]) =
     List(
-      div("Články (", bind(model.transform(_.articles.length)), ")"),
+      //div("Články (", bind(model.transform(_.articles.length)), ")"),
       produce(model.transform(_.articles))(x => x.map(article => {
-        val authorPart = article.author.name.toNonEmptyOpt.map(span(_))
+        val authorPart = article.author.name.toNonEmptyOpt.map(span(ArticleListStyles.info)(_))
         val datePart = article.date.toNonEmptyOpt.map(span(_))
         val catPart = article.category.name.toNonEmptyOpt.map(span(_))
         val commPart = article.commentsCount.map(span(_))
@@ -45,8 +45,8 @@ object Articles {
         )
 
         div(BootstrapStyles.row, ArticleListStyles.body)(
-          colText,
-          colImg
+          colImg,
+          colText
         ).render
       }))
     )
