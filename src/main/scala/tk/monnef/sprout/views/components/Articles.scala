@@ -44,7 +44,7 @@ object Articles {
           p(article.perex)
         )
 
-        div(BootstrapStyles.row, ArticleListStyles.body)(
+        div(BootstrapStyles.row, ArticleListStyles.body, ArticleListStyles.pr.cond(article.isPr))(
           colImg,
           colText
         ).render

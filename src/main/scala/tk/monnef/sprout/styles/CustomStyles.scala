@@ -13,6 +13,7 @@ object CustomStyles extends StyleSheet.Inline {
   val headerText = style(
     textAlign.center,
     padding(0.5 em),
+    marginBottom(0.5 em),
     opacity(0.33),
     fontSize(120 %%)
   )
@@ -36,6 +37,10 @@ object ArticleListStyles extends StyleSheet.Inline {
 
   val info = style(
     paddingLeft(0.5 em)
+  )
+
+  val pr = style(
+    opacity(0.2)
   )
 }
 

@@ -1,5 +1,7 @@
 package tk.monnef.sprout
 
+import scalacss.internal.StyleA
+
 package object utils {
 
   implicit class ListPimps[A](xs: List[A]) {
@@ -10,9 +12,13 @@ package object utils {
       }
     }
   }
-  
-  implicit class StringPimps(x:String){
-    def toNonEmptyOpt:Option[String] = if(x.isEmpty) None else Some(x)
+
+  implicit class StringPimps(x: String) {
+    def toNonEmptyOpt: Option[String] = if (x.isEmpty) None else Some(x)
+  }
+
+  implicit class StyleAPimps(x: StyleA) {
+    def cond(c: Boolean): List[StyleA] = if (c) List(x) else List()
   }
 
 }
