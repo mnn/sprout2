@@ -1,5 +1,8 @@
 package tk.monnef.sprout
 
+import com.avsystem.commons.misc.Opt
+import com.avsystem.commons.serialization.{GenCodec, InputType, ListOutput}
+import com.avsystem.commons.serialization.GenCodec.{create, createList, read, write}
 import io.udash._
 import io.udash.rest.DefaultServerREST
 import io.udash.wrappers.jquery._
@@ -18,6 +21,27 @@ object Context {
 
   private val ApiHost = "localhost"
   private val ApiPort = 8022
+
+  /**
+    * Udash Option JSON codec for (de)serializing it this way:
+    * Some(x) will be serialized as x.
+    * None will be serialized as null.
+    */
+  implicit def optionCodec[T: GenCodec]: GenCodec[Option[T]] =
+    create[Option[T]](
+      i => i.inputType match {
+        case InputType.Null =>
+          i.readNull()
+          None
+        case _ =>
+          Some(read[T](i))
+      },
+      locally {
+        case (o, Some(t)) => write[T](o, t)
+        case (o, None) => o.writeNull()
+      }
+    )
+
   val restServer = DefaultServerREST[StumpRest](ApiHost, ApiPort, "/api/")
   //  val restServer = DefaultServerREST[StumpRest](ApiHost, 3000)
 }
