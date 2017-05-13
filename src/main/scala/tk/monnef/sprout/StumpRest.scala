@@ -8,4 +8,7 @@ import scala.concurrent.Future
 
   @GET
   @RESTName("articles") def article(@URLPart url: String): Future[Article]
+
+  @GET
+  @RESTName("actualities") def news(): Future[Seq[ArticlePreview]]
 }

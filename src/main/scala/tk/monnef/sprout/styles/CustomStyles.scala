@@ -49,10 +49,15 @@ object ArticleStyles extends StyleSheet.Inline {
   import dsl._
 
   val author = style(
-    marginBottom(1 em)
+    //    marginBottom(1 em)
   )
   val perex = style(
-    marginBottom(1 em)
+    marginBottom(1 em),
+    fontSize(120 %%),
+
+    unsafeChild("img")(
+      margin(1 em)
+    )
   )
   // RS
   val body = style(
@@ -72,5 +77,24 @@ object ArticleStyles extends StyleSheet.Inline {
     unsafeChild(".table")(
       margin(1 em, 1 em)
     )
+  )
+}
+
+object NewsListStyles extends StyleSheet.Inline {
+
+  import dsl._
+
+  val body = style(
+    paddingBottom(0.5 em),
+    marginBottom(0.7 em),
+    borderBottom(0.1 em, solid, StyleConstants.Colors.bodyGhostTextColor)
+  )
+
+  val caption = style(
+    fontSize(1.3 em),
+    paddingBottom(0.5 em)
+  )
+
+  val perex = style(
   )
 }

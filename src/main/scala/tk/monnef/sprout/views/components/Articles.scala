@@ -7,7 +7,7 @@ import org.scalajs.dom.raw.Element
 
 import scalatags.JsDom.all._
 import scalacss.ScalatagsCss._
-import tk.monnef.sprout.styles.{ArticleListStyles, CustomStyles, DemoStyles, GlobalStyles}
+import tk.monnef.sprout.styles._
 import tk.monnef.sprout.{ArticlePreview, ArticleState, Model}
 import tk.monnef.sprout.utils._
 
@@ -31,7 +31,7 @@ object Articles {
           div(ArticleListStyles.caption)(
             a(href := ArticleState(article.urlEncoded).url, article.name),
             " | ",
-            a(href := Model.baseUrl + "/" + article.url, target := "blank", "originál")
+            a(href := Model.baseUrl + "/" + article.url, target := "blank", "o")
           ),
           div(
             List(
@@ -53,3 +53,25 @@ object Articles {
 }
 
 case class ArticlesList(articles: Seq[ArticlePreview])
+
+case class NewsList(news: Seq[ArticlePreview])
+
+object News {
+
+  import tk.monnef.sprout.Context._
+
+  def getTemplate(model: ReadableProperty[NewsList]) = List(
+    produce(model.transform(_.news))(x => x.map(article => {
+      div(NewsListStyles.body)(
+        div(NewsListStyles.caption)(
+          a(href := ArticleState(article.urlEncoded).url, article.name),
+          " | ",
+          a(href := Model.baseUrl + "/" + article.url, target := "blank", "o")
+        ),
+        div(NewsListStyles.perex)(
+          article.perex
+        )
+      ).render
+    }))
+  )
+}

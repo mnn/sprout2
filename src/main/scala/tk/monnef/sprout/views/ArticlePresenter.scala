@@ -67,8 +67,13 @@ class ArticleView(model: ModelProperty[ArticleModel], presenter: ArticlePresente
         m.article.map((a: Article) => {
           div(
             h1(a.name),
-            div(ArticleStyles.author)(a.author.name + " | " + a.date),
-            div(ArticleStyles.perex)(a.perex),
+            div(ArticleStyles.perex, GlobalStyles.clearfix)(
+              div(ArticleStyles.author)(a.author.name + " | " + a.date),
+              div(BootstrapStyles.Typography.textCenter)(
+                img(src := a.imageUrl)
+              ),
+              div(a.perex)
+            ),
             div(ArticleStyles.body)(raw(a.body))
           )
         }).getOrElse(div("Načítám...")).render
